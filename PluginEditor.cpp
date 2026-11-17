@@ -52,8 +52,9 @@ SpotTwoAudioProcessorEditor::SpotTwoAudioProcessorEditor (SpotTwoAudioProcessor&
       noteKeyboard (p)
 {
     setSize (760, 520);
-    setResizable (false, false);
-
+    setResizable (true, true);
+    setResizeLimits (560, 400, 1400, 1000);
+    
     loadPaletteFromState();
 
     amountSlider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
