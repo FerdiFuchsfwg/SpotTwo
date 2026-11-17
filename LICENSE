@@ -1,0 +1,10 @@
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+SpotTwo source code is licensed under the GNU Affero General Public License, version 3
+or (at your option) any later version.
+
+The complete license text is available at:
+https://www.gnu.org/licenses/agpl-3.0.html
+
+This notice applies to the SpotTwo project files only. Third-party dependencies,
+including JUCE and its bundled components, are governed by their own licence terms.

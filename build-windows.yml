@@ -1,0 +1,27 @@
+name: Build VST3 (Windows)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -A x64 -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build VST3
+        run: cmake --build build --config Release --target SpotTwo_VST3
+
+      - name: Upload VST3 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpotTwo-Windows-VST3
+          path: build/SpotTwo_artefacts/Release/VST3/SpotTwo.vst3
+          if-no-files-found: error
