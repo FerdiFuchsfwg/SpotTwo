@@ -424,12 +424,15 @@ void SpotTwoAudioProcessorEditor::openColourPicker (int colourIndex)
                                             this);
 }
 
-SpotTwoAudioProcessorEditor::ColourPickerContent::ColourPickerContent (
-    juce::Colour initialColour, std::function<void (juce::Colour)> callback)
+ColourPickerContent::ColourPickerContent(
+    juce::Colour initialColour,
+    std::function<void(juce::Colour)> callback)
     : selector (juce::ColourSelector::showColourAtTop
               | juce::ColourSelector::showSliders
-              | juce::ColourSelector::showColourspace,
-                initialColour, nullptr),
+              | juce::ColourSelector::showColourspace),
+      onColourChanged (std::move(callback))
+{
+    selector.setCurrentColour(initialColour, juce::dontSendNotification);
       onColourChanged (std::move (callback))
 {
     addAndMakeVisible (selector);
